@@ -244,6 +244,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 16),
+                    Text('Vibecoded by Delmer Lopez'),
                   ],
                 ),
               ],
