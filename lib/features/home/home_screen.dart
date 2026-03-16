@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vibe_coding/l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/providers/locale_provider.dart';
 import '../explore/explore_screen.dart';
 import '../trivia/trivia_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final currentLocale = ref.watch(localeProvider);
+
     return Scaffold(
       body: Stack(
         children: [
@@ -22,6 +28,40 @@ class HomeScreen extends StatelessWidget {
                   ],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
+                ),
+              ),
+            ),
+          ),
+          SafeArea(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SegmentedButton<Locale>(
+                  segments: const [
+                    ButtonSegment<Locale>(
+                      value: Locale('en'),
+                      label: Text('EN'),
+                    ),
+                    ButtonSegment<Locale>(
+                      value: Locale('es'),
+                      label: Text('ES'),
+                    ),
+                  ],
+                  selected: {currentLocale},
+                  onSelectionChanged: (Set<Locale> newSelection) {
+                    ref.read(localeProvider.notifier).setLocale(newSelection.first);
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                      (Set<WidgetState> states) {
+                        if (states.contains(WidgetState.selected)) {
+                          return Colors.pinkAccent.shade200.withValues(alpha: 0.5);
+                        }
+                        return Colors.white.withValues(alpha: 0.1);
+                      },
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -56,8 +96,8 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 40),
 
                 // Title
-                const Text(
-                  'JLPT N5\nMastery',
+                Text(
+                  l10n.appTitle,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 48,
@@ -72,7 +112,7 @@ class HomeScreen extends StatelessWidget {
 
                 // Subtitle
                 Text(
-                  'Master the 85 essential kanji.',
+                  l10n.appSubtitle,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w400,
@@ -139,9 +179,9 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              'Start Learning',
+                              l10n.startLearning,
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -209,9 +249,9 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              'Play Trivia',
+                              l10n.playTrivia,
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -224,8 +264,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    const Text(
-                      'Vibecoded by Delmer Lopez',
+                    Text(
+                      l10n.credits,
                       style: TextStyle(color: Colors.white70),
                     ),
                   ],

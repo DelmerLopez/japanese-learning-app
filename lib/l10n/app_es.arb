@@ -1,0 +1,13 @@
+{
+  "appTitle": "Dominio JLPT N5",
+  "appSubtitle": "Domina los 85 kanji esenciales.",
+  "startLearning": "Empezar a Aprender",
+  "playTrivia": "Jugar Trivia",
+  "learnVocabulary": "Aprender Vocabulario",
+  "credits": "Vibecoded por Delmer Lopez",
+  "kanjiExplorerTitle": "Kanji JLPT N5",
+  "triviaTitle": "Trivia - P {current}/{total}",
+  "triviaCompleteTitle": "¡Trivia Completada!",
+  "scoreText": "Tu Puntuación:\n{score} / {total}",
+  "returnHome": "Volver al Inicio"
+}

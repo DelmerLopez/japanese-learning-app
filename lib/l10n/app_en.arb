@@ -1,0 +1,33 @@
+{
+  "appTitle": "JLPT N5 Mastery",
+  "appSubtitle": "Master the 85 essential kanji.",
+  "startLearning": "Start Learning",
+  "playTrivia": "Play Trivia",
+  "learnVocabulary": "Learn Vocabulary",
+  "credits": "Vibecoded by Delmer Lopez",
+  "kanjiExplorerTitle": "JLPT N5 Kanji",
+  "triviaTitle": "Trivia - Q {current}/{total}",
+  "@triviaTitle": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "triviaCompleteTitle": "Trivia Complete!",
+  "scoreText": "Your Score:\n{score} / {total}",
+  "@scoreText": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "returnHome": "Return Home"
+}

@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/models/kanji.dart';
 import '../../../core/data/kanji_data.dart';
+import '../../../core/providers/locale_provider.dart';
 import 'dart:math';
 
 // Represents the state of the Trivia game
@@ -50,10 +51,13 @@ class TriviaState {
 class TriviaNotifier extends Notifier<TriviaState> {
   @override
   TriviaState build() {
+    final locale = ref.watch(localeProvider);
+    final isEs = locale.languageCode == 'es';
+    
     final shuffledQuestions = List<Kanji>.from(n5KanjiList)..shuffle(Random());
 
     // Defer initialization options since state must be returned in build
-    Future.microtask(() => _generateOptions());
+    Future.microtask(() => _generateOptions(isEs));
 
     return TriviaState(
       questions: shuffledQuestions,
@@ -66,6 +70,9 @@ class TriviaNotifier extends Notifier<TriviaState> {
   }
 
   void restartGame() {
+    final locale = ref.read(localeProvider);
+    final isEs = locale.languageCode == 'es';
+
     final shuffledQuestions = List<Kanji>.from(n5KanjiList)..shuffle(Random());
     state = TriviaState(
       questions: shuffledQuestions,
@@ -75,21 +82,22 @@ class TriviaNotifier extends Notifier<TriviaState> {
       selectedOption: null,
       isAnswered: false,
     );
-    _generateOptions();
+    _generateOptions(isEs);
   }
 
-  void _generateOptions() {
+  void _generateOptions(bool isEs) {
     if (state.questions.isEmpty) return;
 
-    final correct = state.currentKanji.meaning;
+    final correct = isEs ? state.currentKanji.meaningEs : state.currentKanji.meaning;
     final r = Random();
     final incorrect = <String>{};
 
     // Pick 2 random wrong meanings
     while (incorrect.length < 2) {
       final randomKanji = n5KanjiList[r.nextInt(n5KanjiList.length)];
-      if (randomKanji.meaning != correct) {
-        incorrect.add(randomKanji.meaning);
+      final meaning = isEs ? randomKanji.meaningEs : randomKanji.meaning;
+      if (meaning != correct) {
+        incorrect.add(meaning);
       }
     }
 
@@ -102,7 +110,10 @@ class TriviaNotifier extends Notifier<TriviaState> {
   void selectOption(String option) {
     if (state.isAnswered) return; // Prevent multiple clicks
 
-    final isCorrect = option == state.currentKanji.meaning;
+    final locale = ref.read(localeProvider);
+    final isEs = locale.languageCode == 'es';
+    final correctMeaning = isEs ? state.currentKanji.meaningEs : state.currentKanji.meaning;
+    final isCorrect = option == correctMeaning;
 
     state = state.copyWith(
       selectedOption: option,
@@ -113,12 +124,15 @@ class TriviaNotifier extends Notifier<TriviaState> {
 
   void nextQuestion() {
     if (state.currentIndex < state.questions.length - 1) {
+      final locale = ref.read(localeProvider);
+      final isEs = locale.languageCode == 'es';
+      
       state = state.copyWith(
         currentIndex: state.currentIndex + 1,
         isAnswered: false,
         resetSelected: true,
       );
-      _generateOptions();
+      _generateOptions(isEs);
     }
   }
 }
