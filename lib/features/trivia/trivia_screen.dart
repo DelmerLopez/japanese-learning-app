@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_vibe_coding/l10n/app_localizations.dart';
 import 'providers/trivia_provider.dart';
 
 class TriviaScreen extends ConsumerWidget {
@@ -10,13 +11,15 @@ class TriviaScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return AlertDialog(
         backgroundColor: const Color(0xff302b63),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text(
-          'Trivia Complete!',
+        title: Text(
+          l10n.triviaCompleteTitle,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 28,
@@ -28,7 +31,7 @@ class TriviaScreen extends ConsumerWidget {
             const Icon(Icons.emoji_events, color: Colors.amber, size: 80),
             const SizedBox(height: 20),
             Text(
-              'Your Score:\n$score / $total',
+              l10n.scoreText(score, total),
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
@@ -64,9 +67,9 @@ class TriviaScreen extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
-              child: const Text(
-                'Return Home',
-                style: TextStyle(
+              child: Text(
+                l10n.returnHome,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -75,12 +78,14 @@ class TriviaScreen extends ConsumerWidget {
             ),
           ),
         ],
-      ),
+      );
+      },
     );
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final triviaState = ref.watch(triviaProvider);
     final triviaNotifier = ref.read(triviaProvider.notifier);
 
@@ -119,7 +124,7 @@ class TriviaScreen extends ConsumerWidget {
           },
         ),
         title: Text(
-          'Trivia - Q ${triviaState.currentIndex + 1}/${triviaState.questions.length}',
+          l10n.triviaTitle(triviaState.currentIndex + 1, triviaState.questions.length),
           style: const TextStyle(
             fontWeight: FontWeight.w800,
             letterSpacing: 1.5,
@@ -189,7 +194,7 @@ class TriviaScreen extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 24.0),
                       child: Column(
                         children: triviaState.currentOptions.map((option) {
-                          bool isCorrectOption = option == curKanji.meaning;
+                          bool isCorrectOption = option == (Localizations.localeOf(context).languageCode == 'es' ? curKanji.meaningEs : curKanji.meaning);
                           bool isSelected =
                               option == triviaState.selectedOption;
 

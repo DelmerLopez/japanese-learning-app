@@ -123,7 +123,9 @@ class _KanjiCardState extends State<KanjiCard>
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      widget.kanji.meaning,
+                      Localizations.localeOf(context).languageCode == 'es'
+                          ? widget.kanji.meaningEs
+                          : widget.kanji.meaning,
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,

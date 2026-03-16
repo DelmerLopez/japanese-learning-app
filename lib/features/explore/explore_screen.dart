@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vibe_coding/l10n/app_localizations.dart';
 import '../../core/data/kanji_data.dart';
 import 'widgets/kanji_card.dart';
 
@@ -27,6 +28,8 @@ class _KanjiExplorerScreenState extends State<KanjiExplorerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -36,9 +39,9 @@ class _KanjiExplorerScreenState extends State<KanjiExplorerScreen> {
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          'JLPT N5 Kanji',
-          style: TextStyle(
+        title: Text(
+          l10n.kanjiExplorerTitle,
+          style: const TextStyle(
             fontWeight: FontWeight.w800,
             letterSpacing: 1.5,
             shadows: [Shadow(color: Colors.black54, blurRadius: 4)],
