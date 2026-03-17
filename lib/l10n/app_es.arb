@@ -9,5 +9,7 @@
   "triviaTitle": "Trivia - P {current}/{total}",
   "triviaCompleteTitle": "¡Trivia Completada!",
   "scoreText": "Tu Puntuación:\n{score} / {total}",
-  "returnHome": "Volver al Inicio"
+  "returnHome": "Volver al Inicio",
+  "vocabularyTopicsTitle": "Vocabulario JLPT N5",
+  "topicsSubtitle": "Selecciona un tema"
 }

@@ -163,6 +163,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Return Home'**
   String get returnHome;
+
+  /// No description provided for @vocabularyTopicsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'JLPT N5 Vocabulary'**
+  String get vocabularyTopicsTitle;
+
+  /// No description provided for @topicsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a topic'**
+  String get topicsSubtitle;
 }
 
 class _AppLocalizationsDelegate

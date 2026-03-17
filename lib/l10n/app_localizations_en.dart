@@ -44,4 +44,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get returnHome => 'Return Home';
+
+  @override
+  String get vocabularyTopicsTitle => 'JLPT N5 Vocabulary';
+
+  @override
+  String get topicsSubtitle => 'Select a topic';
 }

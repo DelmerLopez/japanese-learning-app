@@ -1,0 +1,177 @@
+import 'package:flutter/material.dart';
+import '../models/vocabulary.dart';
+
+const List<VocabularyTopic> n5VocabularyTopics = [
+  VocabularyTopic(
+    id: 'greetings',
+    nameEn: 'Greetings',
+    nameEs: 'Saludos',
+    icon: Icons.waving_hand_rounded,
+    words: [
+      Vocabulary(
+        word: 'おはようございます',
+        reading: 'おはようございます',
+        romaji: 'ohayou gozaimasu',
+        meaning: 'Good morning',
+        meaningEs: 'Buenos días',
+      ),
+      Vocabulary(
+        word: 'こんにちは',
+        reading: 'こんにちは',
+        romaji: 'konnichiwa',
+        meaning: 'Good afternoon / Hello',
+        meaningEs: 'Buenas tardes / Hola',
+      ),
+      Vocabulary(
+        word: 'こんばんは',
+        reading: 'こんばんは',
+        romaji: 'konbanwa',
+        meaning: 'Good evening',
+        meaningEs: 'Buenas noches',
+      ),
+      Vocabulary(
+        word: 'さようなら',
+        reading: 'さようなら',
+        romaji: 'sayounara',
+        meaning: 'Goodbye',
+        meaningEs: 'Adiós',
+      ),
+      Vocabulary(
+        word: 'ありがとう',
+        reading: 'ありがとう',
+        romaji: 'arigatou',
+        meaning: 'Thank you',
+        meaningEs: 'Gracias',
+      ),
+    ],
+  ),
+  VocabularyTopic(
+    id: 'numbers',
+    nameEn: 'Numbers',
+    nameEs: 'Números',
+    icon: Icons.numbers_rounded,
+    words: [
+      Vocabulary(
+        word: '一',
+        reading: 'いち',
+        romaji: 'ichi',
+        meaning: 'One',
+        meaningEs: 'Uno',
+      ),
+      Vocabulary(
+        word: '二',
+        reading: 'に',
+        romaji: 'ni',
+        meaning: 'Two',
+        meaningEs: 'Dos',
+      ),
+      Vocabulary(
+        word: '三',
+        reading: 'さん',
+        romaji: 'san',
+        meaning: 'Three',
+        meaningEs: 'Tres',
+      ),
+      Vocabulary(
+        word: '四',
+        reading: 'よん / し',
+        romaji: 'yon / shi',
+        meaning: 'Four',
+        meaningEs: 'Cuatro',
+      ),
+      Vocabulary(
+        word: '五',
+        reading: 'ご',
+        romaji: 'go',
+        meaning: 'Five',
+        meaningEs: 'Cinco',
+      ),
+    ],
+  ),
+  VocabularyTopic(
+    id: 'colors',
+    nameEn: 'Colors',
+    nameEs: 'Colores',
+    icon: Icons.palette_rounded,
+    words: [
+      Vocabulary(
+        word: '赤',
+        reading: 'あか',
+        romaji: 'aka',
+        meaning: 'Red',
+        meaningEs: 'Rojo',
+      ),
+      Vocabulary(
+        word: '青',
+        reading: 'あお',
+        romaji: 'ao',
+        meaning: 'Blue',
+        meaningEs: 'Azul',
+      ),
+      Vocabulary(
+        word: '黒',
+        reading: 'くろ',
+        romaji: 'kuro',
+        meaning: 'Black',
+        meaningEs: 'Negro',
+      ),
+      Vocabulary(
+        word: '白',
+        reading: 'しろ',
+        romaji: 'shiro',
+        meaning: 'White',
+        meaningEs: 'Blanco',
+      ),
+      Vocabulary(
+        word: '黄色',
+        reading: 'きいろ',
+        romaji: 'kiiro',
+        meaning: 'Yellow',
+        meaningEs: 'Amarillo',
+      ),
+    ],
+  ),
+  VocabularyTopic(
+    id: 'family',
+    nameEn: 'Family',
+    nameEs: 'Familia',
+    icon: Icons.family_restroom_rounded,
+    words: [
+      Vocabulary(
+        word: '家族',
+        reading: 'かぞく',
+        romaji: 'kazoku',
+        meaning: 'Family',
+        meaningEs: 'Familia',
+      ),
+      Vocabulary(
+        word: '母',
+        reading: 'はは',
+        romaji: 'haha',
+        meaning: 'Mother (own)',
+        meaningEs: 'Madre (propia)',
+      ),
+      Vocabulary(
+        word: 'お母さん',
+        reading: 'おかあさん',
+        romaji: 'okaasan',
+        meaning: 'Mother (someone else\'s)',
+        meaningEs: 'Madre (de alguien más)',
+      ),
+      Vocabulary(
+        word: '父',
+        reading: 'ちち',
+        romaji: 'chichi',
+        meaning: 'Father (own)',
+        meaningEs: 'Padre (propio)',
+      ),
+      Vocabulary(
+        word: 'お父さん',
+        reading: 'おとうさん',
+        romaji: 'otousan',
+        meaning: 'Father (someone else\'s)',
+        meaningEs: 'Padre (de alguien más)',
+      ),
+    ],
+  )
+];

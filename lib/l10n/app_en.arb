@@ -29,5 +29,7 @@
       }
     }
   },
-  "returnHome": "Return Home"
+  "returnHome": "Return Home",
+  "vocabularyTopicsTitle": "JLPT N5 Vocabulary",
+  "topicsSubtitle": "Select a topic"
 }

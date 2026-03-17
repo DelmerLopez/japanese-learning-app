@@ -44,4 +44,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get returnHome => 'Volver al Inicio';
+
+  @override
+  String get vocabularyTopicsTitle => 'Vocabulario JLPT N5';
+
+  @override
+  String get topicsSubtitle => 'Selecciona un tema';
 }
